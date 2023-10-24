@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "netShield",
-    "slug": "netShield",
+    "slug": "net-shield",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "402b3903-f117-4444-b9e3-af65683fff3e"
+      }
+    },
+    "owner": "paulvs17"
   }
 }
