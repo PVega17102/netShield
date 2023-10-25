@@ -1,7 +1,7 @@
 //React
 import React, { useState } from 'react';
 import { View, Text , Button } from 'react-native';
-import { RadioButton } from 'react-native-paper';
+import { RadioButton, Snackbar } from 'react-native-paper'; // Import Snackbar from React Native Paper
 import { useNavigation } from '@react-navigation/native';
 
 //Questions
@@ -19,29 +19,29 @@ const shuffledQuizData = shuffleArray(onlineScamQuestions);
 
 function OnlineScamQuiz() {
     const navigation = useNavigation();
-
     const selectedQuestions = shuffledQuizData.slice(0, 5);
-
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [userScore, setUserScore] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
-
-
-    const currentQuestion = selectedQuestions[currentQuestionIndex];
+    const [userScore, setUserScore] = useState(0);
+    const [snackbarVisible, setSnackbarVisible] = useState(false); // State to control Snackbar visibility
+    const [snackbarMessage, setSnackbarMessage] = useState(''); // State for the Snackbar message
 
 
     function checkAnswer() {
-        if (selectedAnswer  === currentQuestion.correctAnswer) {
-            console.log('LE ATINASTEEEE!!!');
+        const currentQuestion = selectedQuestions[currentQuestionIndex];
+
+        if (selectedAnswer === currentQuestion.correctAnswer) {
             setUserScore(userScore + 1);
+            setSnackbarMessage('LE ATINASTEEEE!!!'); 
         } else {
-            console.log('No sabia que los ogros lloran :c');
+            setSnackbarMessage('No sabia que los ogros lloran :c'); 
         }
+        setSnackbarVisible(true); 
     }
 
     function nextQuestion () {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(null); // Reset selected answer for the next question
+        setSelectedAnswer(null);
 
 
         if (currentQuestionIndex === selectedQuestions.length - 1) {
@@ -55,19 +55,29 @@ function OnlineScamQuiz() {
 
         return (
             <View>
-                <Text>{currentQuestion.question}</Text>
-                {currentQuestion.options.map((option, optionIndex) => (
+            <Text>{currentQuestion.question}</Text>
+            {currentQuestion.options.map((option, optionIndex) => (
                 <View key={optionIndex}>
-                    <RadioButton
+                <RadioButton
                     value={option}
                     status={selectedAnswer === option ? 'checked' : 'unchecked'}
                     onPress={() => setSelectedAnswer(option)}
-                    />
-                    <Text>{option}</Text>
+                />
+                <Text>{option}</Text>
                 </View>
-                ))}
-                <Button mode="contained" onPress={checkAnswer} title='Check'>Check Answer</Button>
-                <Button mode="contained" onPress={nextQuestion} title='Next'>Next Question</Button>
+            ))}
+
+            <Button mode="contained" onPress={checkAnswer} title='Check Answer' />
+            <Button mode="contained" onPress={nextQuestion} title='Next' />
+
+
+            <Snackbar
+                visible={snackbarVisible}
+                onDismiss={() => setSnackbarVisible(false)}
+                duration={3000} // Control how long the Snackbar is visible
+            >
+                {snackbarMessage}
+            </Snackbar>
             </View>
         );
     }
