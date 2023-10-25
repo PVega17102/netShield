@@ -1,8 +1,12 @@
-import Start from "./Start"
+import { StatusBar } from "expo-status-bar";
+import AppNavigator from "./AppNavigator";
 
 const Main = () => {
   return (
-    <Start/>
+    <>
+      <AppNavigator/>
+      <StatusBar backgroundColor="#5D92B0"/>
+    </>
   )
 }
 

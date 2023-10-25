@@ -8,12 +8,12 @@
       "sourceExts": ["js", "jsx", "css"]
     },
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/netShield.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/netShield.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f4f5f6"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -23,12 +23,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/netShield.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/netShield.png"
     },
     "extra": {
       "eas": {
