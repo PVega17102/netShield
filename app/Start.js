@@ -2,6 +2,9 @@ import { Button, Image, Text, View } from 'react-native';
 
 import styles from './styles/start.module.css'
 
+import updatingQuestions from './quizQuestions/updatingQuestions';
+
+
 const Start = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -12,6 +15,7 @@ const Start = ({ navigation }) => {
       </View>
       <View style={styles.button}>
         <Button title='COMENZAR' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
+        <Button title='QUIZ' color={'#5D92B0'} onPress={() => navigation.navigate('Quiz', {subjectQuestions: 'updatingQuestions'})}/>
       </View>
     </View>
   )
