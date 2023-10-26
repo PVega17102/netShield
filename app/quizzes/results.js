@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-function ResultScreen() {
+//STYLES
+import styles from "../styles/quiz.module.css"
+
+const ResultScreen = ({navigation}) => {
   // Add your result screen content here
     return (
-        <View>
-        <Text>Quiz Completed! Your Score:</Text>
-        </View>
+      <View style={styles.container}>
+        <Text>Quiz Completed!</Text>
+      </View>
     );
 }
 
