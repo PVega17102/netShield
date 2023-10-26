@@ -6,7 +6,8 @@ import { RadioButton, Snackbar, Card } from 'react-native-paper'; // Import Snac
 //Questions
 import onlineScamQuestions from '../quizQuestions/onlineScamQuestions';
 import updatingQuestions from '../quizQuestions/updatingQuestions';
-import phishingQuestions from '../quizQuestions/phishingQuestions'; 
+import phishingQuestions from '../quizQuestions/phishingQuestions';
+import cyberAtacksQuestions from '../quizQuestions/cyberattacksQuestions';
 
 //Styles
 import styles from "../styles/quiz.module.css"
@@ -49,9 +50,9 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
         //     setShuffledQuizData(shuffleArray(onlineScamQuestions));
         //     break;
 
-        // case 'cyberAtacksQuestions':
-        //     setShuffledQuizData(shuffleArray(updatingQuestions));
-        //     break;
+        case 'cyberAtacksQuestions':
+            setShuffledQuizData(shuffleArray(cyberAtacksQuestions));
+            break;
 
         default:
             setShuffledQuizData([]); // Set a default value or handle other cases as needed
