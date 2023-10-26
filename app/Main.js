@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <>
       <AppNavigator/>
-      <StatusBar backgroundColor="#5D92B0"/>
+      <StatusBar backgroundColor="#5D92B0" style="light"/>
     </>
   )
 }
