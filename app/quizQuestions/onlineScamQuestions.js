@@ -1,4 +1,4 @@
-const questions = [
+const onlineScamQuestions = [
         {
           "question": "¿Cuál es una característica común de las estafas en línea?",
           "options": [
@@ -501,4 +501,4 @@ const questions = [
         },
 ]
 
-export default questions;
+export default onlineScamQuestions;
