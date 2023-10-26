@@ -1,7 +1,7 @@
 //React
 import React, { useState } from 'react';
 import { View, Text , Button } from 'react-native';
-import { RadioButton, Snackbar } from 'react-native-paper'; // Import Snackbar from React Native Paper
+import { RadioButton, Snackbar, Card } from 'react-native-paper'; // Import Snackbar from React Native Paper
 
 //Questions
 import onlineScamQuestions from '../quizQuestions/onlineScamQuestions';
@@ -24,12 +24,14 @@ const  OnlineScamQuiz = ({ navigation }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [userScore, setUserScore] = useState(0);
-    const [snackbarVisible, setSnackbarVisible] = useState(false); // State to control Snackbar visibility
-    const [snackbarMessage, setSnackbarMessage] = useState(''); // State for the Snackbar message
+
     const [isCheckButtonDisabled, setCheckButtonDisabled] = useState(true); // Initialize as disabled
     const [hasCheckedCurrentQuestion, setHasCheckedCurrentQuestion] = useState(false);
     const [isCheckButtonVisible, setCheckButtonVisible] = useState(true);
     const [isNextButtonVisible, setNextButtonVisible] = useState(false);
+
+    const [snackbarVisible, setSnackbarVisible] = useState(false); // State to control Snackbar visibility
+    const [snackbarMessage, setSnackbarMessage] = useState(''); // State for the Snackbar message
 
     function isAnswer(option) {
         setSelectedAnswer(option);
@@ -60,7 +62,10 @@ const  OnlineScamQuiz = ({ navigation }) => {
 
 
         if (currentQuestionIndex === selectedQuestions.length - 1) {
-            navigation.navigate('Result');
+            navigation.navigate('Result', {
+                userScore,
+                totalQuestions: selectedQuestions.length,
+              });
         }
         setCheckButtonDisabled(true);
         setCheckButtonVisible(true);
@@ -73,40 +78,54 @@ const  OnlineScamQuiz = ({ navigation }) => {
 
         return (
             <View style={styles.container}>
+                <Card style={styles.card}>
+
                 <Text>Puntuación: {userScore}</Text>
-            <Text>{currentQuestion.question}</Text>
-            {currentQuestion.options.map((option, optionIndex) => (
-                <View key={optionIndex}>
-                <RadioButton
-                    value={option}
-                    status={selectedAnswer === option ? 'checked' : 'unchecked'}
-                    onPress={() => isAnswer(option)}
-                />
-                <Text>{option}</Text>
-                </View>
-            ))}
+                <Text>{currentQuestion.question}</Text>
+                {currentQuestion.options.map((option, optionIndex) => (
+                    <View key={optionIndex} style={styles.option}>
+                        <RadioButton
+                            value={option}
+                            style={styles.radio_button}
+                            status={selectedAnswer === option ? 'checked' : 'unchecked'}
+                            disabled={hasCheckedCurrentQuestion} // Disable radio buttons when the answer has been checked
+                            onPress={() => {
+                                if (!hasCheckedCurrentQuestion) {
+                                    isAnswer(option);
+                                }
+                            }}
+                        />
+                        <Text>{option}</Text>
+                    </View>
+                    ))}
 
 
             {isCheckButtonVisible && (
-                <Button mode="contained"
+                <Button 
+                    mode="contained"
                     onPress={checkAnswer} 
                     title='Check Answer'
                     disabled={isCheckButtonDisabled || hasCheckedCurrentQuestion} />
             )}
 
             {isNextButtonVisible && (
-                <Button mode="contained" onPress={nextQuestion} title='Next Question' />
+                <Button 
+                    mode="contained" 
+                    onPress={nextQuestion} 
+                    title='Next Question' />
             )}
 
 
             <Snackbar
                 visible={snackbarVisible}
                 onDismiss={() => setSnackbarVisible(false)}
-                duration={4000} // Control how long the Snackbar is visible
+                duration={2000} // Control how long the Snackbar is visible
                 style={styles.answer_status}
             >
                 {snackbarMessage}
             </Snackbar>
+            </Card>
+
             </View>
         );
     }

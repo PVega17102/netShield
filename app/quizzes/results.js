@@ -1,16 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 //STYLES
 import styles from "../styles/quiz.module.css"
 
-const ResultScreen = ({navigation}) => {
-  // Add your result screen content here
-    return (
-      <View style={styles.container}>
-        <Text>Quiz Completed!</Text>
-      </View>
+const ResultScreen = ({route, navigation}) => {
+  const { userScore, totalQuestions } = route.params;
+  
+  const percentage = ((userScore / totalQuestions) * 100).toFixed(2);
+
+  return (
+    <View>
+      <Text>Your Quiz Results:</Text>
+      <Text>Score: {userScore}/{totalQuestions}</Text>
+      <Text>Percentage: {percentage}%</Text>
+
+      <Button
+        title="Back to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
     );
+
 }
 
 export default ResultScreen;
