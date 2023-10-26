@@ -1,10 +1,12 @@
 //React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text , Button } from 'react-native';
 import { RadioButton, Snackbar, Card } from 'react-native-paper'; // Import Snackbar from React Native Paper
 
 //Questions
 import onlineScamQuestions from '../quizQuestions/onlineScamQuestions';
+import updatingQuestions from '../quizQuestions/updatingQuestions';
+import phishingQuestions from '../quizQuestions/phishingQuestions'; 
 
 //Styles
 import styles from "../styles/quiz.module.css"
@@ -17,9 +19,46 @@ function shuffleArray(array) {
     return array;
 }
 
-const shuffledQuizData = shuffleArray(onlineScamQuestions);
 
-const  OnlineScamQuiz = ({ navigation }) => {
+const  OnlineScamQuiz = ({ route, navigation }) => {
+
+    const { subjectQuestions } = route.params;
+
+    const [shuffledQuizData, setShuffledQuizData] = useState([]);
+
+    useEffect(() => {
+        switch (subjectQuestions) {
+        case 'onlineScamQuizQuestions':
+            setShuffledQuizData(shuffleArray(onlineScamQuestions));
+            break;
+
+        case 'updatingQuestions':
+            setShuffledQuizData(shuffleArray(updatingQuestions));
+            break;
+
+        
+        case 'phishingQuestions':
+            setShuffledQuizData(shuffleArray(phishingQuestions));
+            break;
+
+        // case 'strongPasswordsQuestions':
+        //     setShuffledQuizData(shuffleArray(onlineScamQuestions));
+        //     break;
+
+        // case 'personalIdentityQuestions':
+        //     setShuffledQuizData(shuffleArray(onlineScamQuestions));
+        //     break;
+
+        // case 'cyberAtacksQuestions':
+        //     setShuffledQuizData(shuffleArray(updatingQuestions));
+        //     break;
+
+        default:
+            setShuffledQuizData([]); // Set a default value or handle other cases as needed
+        }
+    }, []);
+
+
     const selectedQuestions = shuffledQuizData.slice(0, 5);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -65,7 +104,7 @@ const  OnlineScamQuiz = ({ navigation }) => {
             navigation.navigate('Result', {
                 userScore,
                 totalQuestions: selectedQuestions.length,
-              });
+            });
         }
         setCheckButtonDisabled(true);
         setCheckButtonVisible(true);
@@ -78,6 +117,7 @@ const  OnlineScamQuiz = ({ navigation }) => {
 
         return (
             <View style={styles.container}>
+                <Text>{subjectQuestions}</Text>
                 <Card style={styles.card}>
 
                 <Text>Puntuación: {userScore}</Text>

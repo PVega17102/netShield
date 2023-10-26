@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Screens
 import Start from "./Start";
 import Home from './Home';
-import OnlineScamQuiz from "./quizzes/onlineScamQuiz";
+import Quiz from "./quizzes/Quiz";
 import ResultScreen from './quizzes/results'; // Your result screen component
 
 const Stack = createNativeStackNavigator();
@@ -26,7 +26,7 @@ const AppNavigator = () => {
         </Stack.Screen>
 
         <Stack.Screen name="Quiz">
-          {(props) => <OnlineScamQuiz {...props}/>}
+          {(props) => <Quiz {...props}/>}
         </Stack.Screen>
 
         <Stack.Screen name="Result">
