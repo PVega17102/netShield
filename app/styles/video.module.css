@@ -1,0 +1,36 @@
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #5D92B0;
+}
+
+.content {
+    margin-top: -3.5rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.displaycontainer {
+    background: #dddddd;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 32;
+  color: #f4f5f6;
+  text-align: center;
+}
+
+.note {
+  font-weight: 600;
+  font-size: 14;
+  color: #1d2d3d;
+}

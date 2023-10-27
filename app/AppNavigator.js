@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Screens
 import Start from "./Start";
 import Home from './Home';
+import Video from './Video';
 import Quiz from "./quizzes/Quiz";
 import ResultScreen from './quizzes/results'; // Your result screen component
 
@@ -18,11 +19,15 @@ const AppNavigator = () => {
       screenOptions={{ headerShown: false }}>
 
         <Stack.Screen name="Start" >
-            {(props) => <Start {...props} />}
+          {(props) => <Start {...props} />}
         </Stack.Screen>
         
         <Stack.Screen name="Home" >
-        {(props) => <Home {...props} />}
+          {(props) => <Home {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="Video">
+          {(props) => <Video {...props}/>}
         </Stack.Screen>
 
         <Stack.Screen name="Quiz">

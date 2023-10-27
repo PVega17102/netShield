@@ -17,7 +17,7 @@ const theme = {
 }
 
 const ResultScreen = ({route, navigation}) => {
-  const { userScore, totalQuestions, subjectName } = route.params;  
+  const { userScore, totalQuestions, subjectName, subjectQuestions, videoID } = route.params;  
   const percentage = ((userScore / totalQuestions) * 100).toFixed(2);
 
   const approvedMessage = percentage >= 80.00 ? '¡Aprobado!' : 'No Aprobado';
@@ -37,15 +37,25 @@ const ResultScreen = ({route, navigation}) => {
           <Text style={styles.text_info}>Score: {userScore}/{totalQuestions}</Text>
           <Text style={styles.text_info}>Percentage: {percentage}%</Text>
         </View>
-
+        {approvedMessage === '¡Aprobado!' ?
         <Button
           title="Finish Quiz"
           mode='contained'
           theme={{roundness: 1}}
           style={styles.finish_button}
-          onPress={() => navigation.navigate('Start')}>
+          onPress={() => navigation.push('Start')}>
         Finish Quiz
         </Button>
+        : 
+        <Button
+          title="Retry Course"
+          mode='contained'
+          theme={{roundness: 1}}
+          style={styles.finish_button}
+          onPress={() => navigation.push('Video', {subjectQuestions, subjectName, videoID, retry: true})}>
+        Retry Course
+        </Button>
+        }
 
     </Card>
   </View>
