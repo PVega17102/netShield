@@ -119,6 +119,7 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
             navigation.navigate('Result', {
                 userScore,
                 totalQuestions: selectedQuestions.length,
+                subjectName
             });
         }
         setCheckButtonDisabled(true);
