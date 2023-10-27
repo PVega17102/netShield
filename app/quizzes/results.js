@@ -52,7 +52,7 @@ const ResultScreen = ({route, navigation}) => {
           mode='contained'
           theme={{roundness: 1}}
           style={styles.finish_button}
-          onPress={() => navigation.push('Video', {subjectQuestions, subjectName, videoID, retry: true})}>
+          onPress={() => navigation.push('Video', {subjectQuestions, subjectName, videoID})}>
         Retry Course
         </Button>
         }

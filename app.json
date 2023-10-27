@@ -1,11 +1,15 @@
 {
   "expo": {
-    "name": "netShield",
+    "name": "Net Shield",
     "slug": "net-shield",
     "version": "1.0.0",
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "css"]
+      "sourceExts": [
+        "js",
+        "jsx",
+        "css"
+      ]
     },
     "orientation": "portrait",
     "icon": "./assets/netShield.png",
@@ -25,13 +29,15 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/netShield.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.paulvs17.netshield"
     },
     "web": {
       "favicon": "./assets/netShield.png"
     },
     "extra": {
       "eas": {
+        "projectId": "402b3903-f117-4444-b9e3-af65683fff3e"
       }
     },
     "owner": "paulvs17"

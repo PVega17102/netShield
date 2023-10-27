@@ -8,7 +8,7 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Home</Text>
-      <Pressable style={styles.videocard} onPress={() => navigation.navigate('Video', {subjectQuestions: courseList[rec].subjectQuestions, subjectName: courseList[rec].name, videoID: courseList[rec].videoID})}>
+      <Pressable style={styles.videocard} onPress={() => navigation.push('Video', {subjectQuestions: courseList[rec].subjectQuestions, subjectName: courseList[rec].name, videoID: courseList[rec].videoID})}>
         <ImageBackground source={courseList[rec].thumb} borderRadius={10} style={styles.recommended}>
           <View style={styles.separation}>
             <View style={styles.videosubtitlecont}>
@@ -25,7 +25,7 @@ const Home = ({ navigation }) => {
           <Text style={styles.course}>Cursos</Text>
           <ScrollView horizontal={true} style={styles.scrollX}>
             {courseList.map((courseInfo, index)=>
-            <Pressable key={index} onPress={() => navigation.navigate('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
+            <Pressable key={index} onPress={() => navigation.push('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
@@ -40,7 +40,7 @@ const Home = ({ navigation }) => {
           <Text style={styles.course}>Tendencia</Text>
           <ScrollView horizontal={true} style={styles.scrollX}>
             {courseList.map((courseInfo, index)=>
-            <Pressable key={index} onPress={() => navigation.navigate('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
+            <Pressable key={index} onPress={() => navigation.push('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
@@ -69,29 +69,29 @@ const courseList = [
   {
     name: 'Online Scamming',
     img: require('./img/scamming.png'),
-    thumb: require('./img/thumb-update.png'),
+    thumb: require('./img/thumb-scamming.png'),
     subjectQuestions: 'onlineScamQuizQuestions',
-    videoID: ''
+    videoID: 'tnKtD7gZZRA'
   },
   {
     name: 'Phishing',
     img: require('./img/phishing.png'),
-    thumb: require('./img/thumb-update.png'),
+    thumb: require('./img/thumb-phishing.png'),
     subjectQuestions: 'phishingQuestions',
     videoID: 'TVG_t2ExrXw'
   },
   {
     name: 'Protección de Identidad Personal',
     img: require('./img/personal-identity-protection.png'),
-    thumb: require('./img/thumb-update.png'),
-    subjectQuestions: '',
+    thumb: require('./img/thumb-personal-identity-protection.png'),
+    subjectQuestions: 'personalIdentityQuestions',
     videoID: ''
   },
   {
     name: 'Strong Passwords',
     img: require('./img/password.png'),
     thumb: require('./img/thumb-password.png'),
-    subjectQuestions: '',
+    subjectQuestions: 'strongPasswordsQuestions',
     videoID: '3XzibObHQ5A'
   },
   {

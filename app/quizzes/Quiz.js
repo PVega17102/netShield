@@ -16,6 +16,8 @@ import onlineScamQuestions from '../quizQuestions/onlineScamQuestions';
 import updatingQuestions from '../quizQuestions/updatingQuestions';
 import phishingQuestions from '../quizQuestions/phishingQuestions';
 import cyberAtacksQuestions from '../quizQuestions/cyberAttacksQuestinos';
+import strongPaswordsQuestions from '../quizQuestions/strongPaswordsQuestions';
+import personalIdentityQuestions from '../quizQuestions/personalIdentityQuestions';
 
 //Styles
 import styles from "../styles/quiz.module.css"
@@ -56,13 +58,13 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
             setShuffledQuizData(shuffleArray(phishingQuestions));
             break;
 
-        // case 'strongPasswordsQuestions':
-        //     setShuffledQuizData(shuffleArray(onlineScamQuestions));
-        //     break;
+        case 'strongPasswordsQuestions':
+            setShuffledQuizData(shuffleArray(strongPaswordsQuestions));
+            break;
 
-        // case 'personalIdentityQuestions':
-        //     setShuffledQuizData(shuffleArray(onlineScamQuestions));
-        //     break;
+        case 'personalIdentityQuestions':
+            setShuffledQuizData(shuffleArray(personalIdentityQuestions));
+            break;
 
         case 'cyberAtacksQuestions':
             setShuffledQuizData(shuffleArray(cyberAtacksQuestions));

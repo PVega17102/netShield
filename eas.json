@@ -1,0 +1,25 @@
+{
+  "cli": {
+    "version": ">= 5.5.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "env": {
+        "APP_ICON": "./assets/netShield.png",
+        "APP_NAME": "Net Shield"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
