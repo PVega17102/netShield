@@ -37,7 +37,7 @@ function shuffleArray(array) {
 
 const  OnlineScamQuiz = ({ route, navigation }) => {
 
-    const { subjectQuestions, subjectName } = route.params;
+    const { subjectQuestions, subjectName, videoID } = route.params;
 
     const [shuffledQuizData, setShuffledQuizData] = useState([]);
 
@@ -119,7 +119,9 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
             navigation.navigate('Result', {
                 userScore,
                 totalQuestions: selectedQuestions.length,
-                subjectName
+                subjectName,
+                videoID,
+                subjectQuestions
             });
         }
         setCheckButtonDisabled(true);
