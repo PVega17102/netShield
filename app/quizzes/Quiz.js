@@ -1,17 +1,31 @@
 //React
 import React, { useState, useEffect } from 'react';
-import { View, Text , Button } from 'react-native';
-import { RadioButton, Snackbar, Card } from 'react-native-paper'; // Import Snackbar from React Native Paper
+import { View, Text } from 'react-native';
+import {
+        MD3LightTheme as DefaulTheme,
+        PaperProvider,
+        RadioButton,
+        Snackbar,
+        Button,
+        Card } from 'react-native-paper'; // Import Snackbar from React Native Paper
+
+import { MainScheme } from '../theme/mainTheme';
 
 //Questions
 import onlineScamQuestions from '../quizQuestions/onlineScamQuestions';
 import updatingQuestions from '../quizQuestions/updatingQuestions';
 import phishingQuestions from '../quizQuestions/phishingQuestions';
-import cyberAtacksQuestions from '../quizQuestions/cyberattacksQuestions';
+import cyberAtacksQuestions from '../quizQuestions/cyberAttacksQuestinos';
 
 //Styles
 import styles from "../styles/quiz.module.css"
 
+const theme = {
+    ...DefaulTheme,
+    colors: MainScheme
+}
+
+//SUFFLE ARRAY
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -23,7 +37,7 @@ function shuffleArray(array) {
 
 const  OnlineScamQuiz = ({ route, navigation }) => {
 
-    const { subjectQuestions } = route.params;
+    const { subjectQuestions, subjectName } = route.params;
 
     const [shuffledQuizData, setShuffledQuizData] = useState([]);
 
@@ -83,9 +97,9 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
 
         if (selectedAnswer === currentQuestion.correctAnswer) {
             setUserScore(userScore + 1);
-            setSnackbarMessage('LE ATINASTEEEE!!!'); 
+            setSnackbarMessage('¡Correcto!'); 
         } else {
-            setSnackbarMessage('No sabia que los ogros lloran :c'); 
+            setSnackbarMessage('Respuesta erronea :('); 
         }
 
         setHasCheckedCurrentQuestion(true); // The user has checked the current question
@@ -105,6 +119,7 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
             navigation.navigate('Result', {
                 userScore,
                 totalQuestions: selectedQuestions.length,
+                subjectName
             });
         }
         setCheckButtonDisabled(true);
@@ -117,57 +132,67 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
         const currentQuestion = selectedQuestions[currentQuestionIndex];
 
         return (
-            <View style={styles.container}>
-                <Text>{subjectQuestions}</Text>
-                <Card style={styles.card}>
+            <PaperProvider theme={theme}>
+                <View style={styles.container}>
+                    <Text style={styles.title}>{subjectName}</Text>
+                    <Text style={styles.subtitle}>Quiz</Text>
+                    <Text style={styles.score}>Puntuación: {userScore}/{selectedQuestions.length}</Text>
 
-                <Text>Puntuación: {userScore}</Text>
-                <Text>{currentQuestion.question}</Text>
-                {currentQuestion.options.map((option, optionIndex) => (
-                    <View key={optionIndex} style={styles.option}>
-                        <RadioButton
-                            value={option}
-                            style={styles.radio_button}
-                            status={selectedAnswer === option ? 'checked' : 'unchecked'}
-                            disabled={hasCheckedCurrentQuestion} // Disable radio buttons when the answer has been checked
-                            onPress={() => {
-                                if (!hasCheckedCurrentQuestion) {
-                                    isAnswer(option);
-                                }
-                            }}
-                        />
-                        <Text>{option}</Text>
-                    </View>
-                    ))}
-
-
-            {isCheckButtonVisible && (
-                <Button 
-                    mode="contained"
-                    onPress={checkAnswer} 
-                    title='Check Answer'
-                    disabled={isCheckButtonDisabled || hasCheckedCurrentQuestion} />
-            )}
-
-            {isNextButtonVisible && (
-                <Button 
-                    mode="contained" 
-                    onPress={nextQuestion} 
-                    title='Next Question' />
-            )}
+                    <Card style={styles.card}>
+                    <Text style={styles.question}>{currentQuestion.question}</Text>
+                    <View style={styles.options_container}>
+                        {currentQuestion.options.map((option, optionIndex) => (
+                            <View key={optionIndex} style={styles.single_option}>
+                                <RadioButton
+                                    value={option}
+                                    color='#5D92B0'
+                                    
+                                    status={selectedAnswer === option ? 'checked' : 'unchecked'}
+                                    disabled={hasCheckedCurrentQuestion} // Disable radio buttons when the answer has been checked
+                                    onPress={() => {
+                                        if (!hasCheckedCurrentQuestion) {
+                                            isAnswer(option);
+                                        }
+                                    }}
+                                />
+                                <Text style={styles.option_text}>{option}</Text>
+                            </View>
+                            ))}
+                        </View>
 
 
-            <Snackbar
-                visible={snackbarVisible}
-                onDismiss={() => setSnackbarVisible(false)}
-                duration={2000} // Control how long the Snackbar is visible
-                style={styles.answer_status}
-            >
-                {snackbarMessage}
-            </Snackbar>
-            </Card>
+                {isCheckButtonVisible && (
+                    <Button 
+                        mode="contained"
+                        onPress={checkAnswer} 
+                        title='Check Answer'
+                        textColor='#fff'
+                        theme={{roundness: 1}}
+                        disabled={isCheckButtonDisabled || hasCheckedCurrentQuestion}>Check Answer</Button>
+                )}
 
-            </View>
+                {isNextButtonVisible && (
+                    <Button 
+                        mode="contained" 
+                        onPress={nextQuestion}
+                        textColor='#fff'
+                        theme={{roundness: 1}}
+                        title='Next Question'>Next Question</Button>
+                )}
+
+
+                <Snackbar
+                    visible={snackbarVisible}
+                    onDismiss={() => setSnackbarVisible(false)}
+                    duration={1000} // Control how long the Snackbar is visible
+                    style={{backgroundColor: snackbarMessage === '¡Correcto!' ? theme.colors.success : theme.colors.error}}
+                >
+                    {snackbarMessage}
+                </Snackbar>
+                </Card>
+
+                </View>
+            </PaperProvider>
         );
     }
 }
