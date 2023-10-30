@@ -2,8 +2,11 @@ import { Button, Image, Text, View } from 'react-native';
 
 import styles from './styles/start.module.css'
 
-import updatingQuestions from './quizQuestions/updatingQuestions';
+// App entry point or user registration/login
+import { initializeUserQuizInfo } from './quizzes/quizInfo';
 
+// Initialize userQuizInfo when the app starts
+initializeUserQuizInfo();
 
 const Start = ({ navigation }) => {
   return (
@@ -15,6 +18,7 @@ const Start = ({ navigation }) => {
       </View>
       <View style={styles.button}>
         <Button title='COMENZAR' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
+        <Button title='QUIZ' color={'#5D92B0'} onPress={() => navigation.navigate('Quiz', {subjectQuestions: 'onlineScamQuizQuestions', subjectName: 'Online Scamming', videoID: 'tnKtD7gZZRAr'})}/>
       </View>
     </View>
   )

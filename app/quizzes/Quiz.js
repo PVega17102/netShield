@@ -76,7 +76,7 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
     }, []);
 
 
-    const selectedQuestions = shuffledQuizData.slice(0, 5);
+    const selectedQuestions = shuffledQuizData.slice(0, 1);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [userScore, setUserScore] = useState(0);

@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
+    "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.16",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "expo": "~49.0.15",
+    "expo-dev-client": "~2.4.11",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -23,8 +25,7 @@
     "react-native-paper": "^5.11.1",
     "react-native-web": "~0.19.6",
     "react-native-webview": "13.2.2",
-    "react-native-youtube-iframe": "^2.3.0",
-    "expo-dev-client": "~2.4.11"
+    "react-native-youtube-iframe": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
