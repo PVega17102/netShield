@@ -86,6 +86,15 @@ const Home = ({ navigation }) => {
   }
   }, [userQuizInfo]);
 
+  //SUFFLE ARRAY
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Home</Text>
@@ -112,9 +121,10 @@ const Home = ({ navigation }) => {
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
+                  <Text style={courseInfo.completed === 'true' ? styles.statusDone : styles.statusIncomplete} >{courseInfo.completed === 'true' ? 'Aprobado' : 'No finalizado'}</Text>
+                  {courseInfo.completed === 'true' ? ( <Image source={require("./img/badge.png")} style={styles.badge}></Image> ) :null}
                 </View>
                 <Text style={styles.name}>{courseInfo.name}</Text>
-                <Text>{courseInfo.completed}</Text>
               </View>
             </Pressable>
             )}
@@ -123,11 +133,13 @@ const Home = ({ navigation }) => {
         <View style={styles.section}>
           <Text style={styles.course}>Tendencia</Text>
           <ScrollView horizontal={true} style={styles.scrollX}>
-            {courseList.map((courseInfo, index)=>
+            {shuffleArray(courseList).map((courseInfo, index)=>
             <Pressable key={index} onPress={() => navigation.push('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
+                  <Text style={courseInfo.completed === 'true' ? styles.statusDone : styles.statusIncomplete} >{courseInfo.completed === 'true' ? 'Aprobado' : 'No finalizado'}</Text>
+                  {courseInfo.completed === 'true' ? ( <Image source={require("./img/badge.png")} style={styles.badge}></Image> ) :null}
                 </View>
                 <Text style={styles.name}>{courseInfo.name}</Text>
               </View>

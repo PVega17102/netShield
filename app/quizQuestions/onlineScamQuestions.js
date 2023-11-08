@@ -100,16 +100,6 @@ const onlineScamQuestions = [
           "correctAnswer": "Abordar los mensajes con escepticismo y verificar su legitimidad"
         },
         {
-          "question": "¿Qué significa compartir tus experiencias con amigos y familiares cuando te encuentras con una estafa?",
-          "options": [
-            "Es innecesario y no ayuda a proteger a otros",
-            "Aumenta el riesgo de que otros caigan en la misma estafa",
-            "Aumenta la conciencia y ayuda a proteger a tus seres queridos",
-            "Es esencial para evitar la vergüenza"
-          ],
-          "correctAnswer": "Aumenta la conciencia y ayuda a proteger a tus seres queridos"
-        },
-        {
           "question": "¿Qué significa cuando te encuentras con una estafa que utiliza tácticas de presión como 'actúa ahora'?",
           "options": [
             "Es una oferta confiable que debe ser tomada de inmediato",
@@ -499,6 +489,36 @@ const onlineScamQuestions = [
           ],
           "correctAnswer": "Abordar los mensajes con escepticismo y verificar su legitimidad"
         },
+        {
+          "question": "¿Cuál es una señal de alerta común que puede indicar una estafa en línea?",
+          "options": [
+            "Correo electrónico de un amigo",
+            "Gramática y ortografía perfectas",
+            "Una solicitud de ayuda genuina",
+            "Oferta de altos rendimientos sin esfuerzo"
+          ],
+          "correctAnswer": "Oferta de altos rendimientos sin esfuerzo"
+        },
+        {
+          "question": "¿Qué deben hacer las personas al recibir un mensaje sospechoso de una fuente desconocida?",
+          "options": [
+            "Hacer clic en todos los enlaces para investigar",
+            "Compartir la información con amigos y familiares de inmediato",
+            "Abordar el mensaje con escepticismo y verificar su autenticidad",
+            "Ignorar el mensaje y borrarlo sin leerlo"
+          ],
+          "correctAnswer": "Abordar el mensaje con escepticismo y verificar su autenticidad"
+        },
+        {
+          "question": "¿Por qué es importante informar sobre las estafas en línea?",
+          "options": [
+            "Para ayudar a los estafadores a mejorar sus tácticas",
+            "Para mantener a otros en la oscuridad",
+            "Para aumentar la conciencia y ayudar a prevenir futuras estafas",
+            "Para recibir recompensas financieras por la información proporcionada"
+          ],
+          "correctAnswer": "Para aumentar la conciencia y ayudar a prevenir futuras estafas"
+        }
 ]
 
 export default onlineScamQuestions;

@@ -145,3 +145,32 @@
   text-decoration: underline;
   /* outline-color: #5D92B0 */
 }
+
+.badge{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  z-index: 1;
+  right: 4;
+  bottom: 4;
+}
+
+
+.statusDone, .statusIncomplete{
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  bottom: 0;
+  border-radius: 2px 2px 12px 12px;
+  width: 100%;
+  font-weight: 600;
+  color: white;
+}
+
+.statusDone{
+  background-color: #0cd39180;
+}
+
+.statusIncomplete{
+  background-color: #4a5a5d80;
+}

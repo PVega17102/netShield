@@ -18,7 +18,6 @@ const Start = ({ navigation }) => {
       </View>
       <View style={styles.button}>
         <Button title='COMENZAR' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
-        <Button title='QUIZ' color={'#5D92B0'} onPress={() => navigation.navigate('Quiz', {subjectQuestions: 'onlineScamQuizQuestions', subjectName: 'Online Scamming', videoID: 'tnKtD7gZZRAr'})}/>
       </View>
     </View>
   )

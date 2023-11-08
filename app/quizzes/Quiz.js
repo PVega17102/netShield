@@ -1,6 +1,7 @@
 //React
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { incrementQuizAttempts, getQuizAttempts } from './attempts';
 import {
         MD3LightTheme as DefaulTheme,
         PaperProvider,
@@ -15,7 +16,7 @@ import { MainScheme } from '../theme/mainTheme';
 import onlineScamQuestions from '../quizQuestions/onlineScamQuestions';
 import updatingQuestions from '../quizQuestions/updatingQuestions';
 import phishingQuestions from '../quizQuestions/phishingQuestions';
-import cyberAtacksQuestions from '../quizQuestions/cyberAttacksQuestinos';
+import cyberAtacksQuestions from '../quizQuestions/cyberAttacksQuestions';
 import strongPaswordsQuestions from '../quizQuestions/strongPaswordsQuestions';
 import personalIdentityQuestions from '../quizQuestions/personalIdentityQuestions';
 
@@ -40,7 +41,6 @@ function shuffleArray(array) {
 const  OnlineScamQuiz = ({ route, navigation }) => {
 
     const { subjectQuestions, subjectName, videoID } = route.params;
-
     const [shuffledQuizData, setShuffledQuizData] = useState([]);
 
     useEffect(() => {
@@ -76,7 +76,7 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
     }, []);
 
 
-    const selectedQuestions = shuffledQuizData.slice(0, 1);
+    const selectedQuestions = shuffledQuizData.slice(0, 10);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [userScore, setUserScore] = useState(0);
@@ -125,13 +125,27 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
                 videoID,
                 subjectQuestions
             });
+
+            incrementQuizAttempts(subjectQuestions);
         }
         setCheckButtonDisabled(true);
         setCheckButtonVisible(true);
         setNextButtonVisible(false);
     };
 
-      // Check if the quiz is completed before accessing currentQuestion
+
+    //Manage attempts
+    const [quizAttempts, setQuizAttempts] = useState(0);
+
+    useEffect(() => {
+      // Load the quiz attempts count when the component mounts
+        getQuizAttempts(subjectQuestions)
+        .then((attempts) => {
+            setQuizAttempts(attempts);
+    });
+    }, [subjectQuestions]);
+
+    // Check if the quiz is completed before accessing currentQuestion
     if (currentQuestionIndex < selectedQuestions.length) {
         const currentQuestion = selectedQuestions[currentQuestionIndex];
 
@@ -140,6 +154,7 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
                 <View style={styles.container}>
                     <Text style={styles.title}>{subjectName}</Text>
                     <Text style={styles.subtitle}>Quiz</Text>
+                    <Text style={styles.score}>Intentos: {quizAttempts} / 5</Text>
                     <Text style={styles.score}>Puntuación: {userScore}/{selectedQuestions.length}</Text>
 
                     <Card style={styles.card}>

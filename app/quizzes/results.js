@@ -54,7 +54,7 @@ const ResultScreen = ({route, navigation}) => {
             
             const relevantProperty = statusMap[subjectQuestions];
             if (relevantProperty) {
-              parsedUserQuizInfo[relevantProperty] = false;
+              parsedUserQuizInfo[relevantProperty] = percentage >= 80.00;
             }
 
             // Save the updated userQuizInfo back to AsyncStorage
@@ -80,11 +80,9 @@ const ResultScreen = ({route, navigation}) => {
       <Card style={styles.card}>
         <Text style={styles.card_title}>Your Quiz Results</Text>
         <Text style={approvedMessage === '¡Aprobado!' ? styles.approved : styles.not_approved}>{approvedMessage}</Text>
-        <Text>{JSON.stringify(parsedUserQuizInfo)}</Text>
-
         <View style={styles.score_info}>
-          <Text style={styles.text_info}>Score: {userScore}/{totalQuestions}</Text>
-          <Text style={styles.text_info}>Percentage: {percentage}%</Text>
+          <Text style={styles.text_info}>Puntuación: {userScore}/{totalQuestions}</Text>
+          <Text style={styles.text_info}>Calificación: {percentage}%</Text>
         </View>
         {approvedMessage === '¡Aprobado!' ?
         <Button
