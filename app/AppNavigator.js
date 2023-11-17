@@ -9,6 +9,8 @@ import Home from './Home';
 import Video from './Video';
 import Quiz from "./quizzes/Quiz";
 import ResultScreen from './quizzes/results'; // Your result screen component
+import ThreatAlerts from './ThreatAlerts';
+import Infographic from './Infographic';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +38,15 @@ const AppNavigator = () => {
 
         <Stack.Screen name="Result">
           {(props) => <ResultScreen {...props} />}
+        </Stack.Screen>
+
+        
+        <Stack.Screen name="ThreatAlerts">
+          {(props) => <ThreatAlerts {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="Infographic">
+          {(props) => <Infographic {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

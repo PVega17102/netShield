@@ -17,7 +17,8 @@ const Start = ({ navigation }) => {
         <Text style={styles.description}>Tu entrada a la ciberseguridad. Aprende y protege datos con una experiencia flexible para principiantes y profesionales.</Text>
       </View>
       <View style={styles.button}>
-        <Button title='COMENZAR' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
+        <Button title='CURSOS' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
+        <Button title='ALERTAS' color={'#5D92B0'} onPress={() => navigation.navigate('ThreatAlerts')}/>
       </View>
     </View>
   )
