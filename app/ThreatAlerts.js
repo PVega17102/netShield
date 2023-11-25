@@ -24,7 +24,7 @@ const ThreatAlerts = ({ navigation }) => {
       </Pressable>
       <ScrollView style={styles.scrollY}>
       <View style={styles.section}>
-          <Text style={styles.course}>Tendencia</Text>
+          <Text style={styles.course}>Infografías</Text>
           <ScrollView horizontal={true} style={styles.scrollX}>
             {shuffleArray(infographicList).map((Info, index)=>
             <Pressable key={index} onPress={() => navigation.push('Infographic', {name: Info.name})}>

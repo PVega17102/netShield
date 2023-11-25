@@ -1,24 +1,43 @@
-import { Button, Image, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
+
 
 import styles from './styles/start.module.css'
-
-// App entry point or user registration/login
-import { initializeUserQuizInfo } from './quizzes/quizInfo';
-
-// Initialize userQuizInfo when the app starts
-initializeUserQuizInfo();
 
 const Infographic = ({ route, navigation }) => {
 
     const { name } = route.params;
 
+    const images = {
+        'Actualizaciones Regulares de Software': 'swUpdatesInfo.jpg',
+        'Online Scamming': require('./img/onlineScamInfo.png'),
+        'Phishing': 'phishingInfo.jpg',
+        'Protección de Identidad Personal': 'persIdentityInfo.jpg',
+        'Strong Passwords': 'strongPassInfo.jpg',
+        'Protección Contra Ciberataques': 'cyberAtacksInfo.jpg'
+    }
+
+
     return (
         <View style={styles.container}>
-        <Image style={styles.logo} source={require('./img/netShield.png')}/>
-        <Text style={styles.title}>Net Shield</Text>
-        <View style={styles.content}>
-            <Text>{name}</Text>
-        </View>
+            <View style={styles.containerHorizontal}>
+                <Image style={styles.logoHorizontal} source={require('./img/netShield.png')}/>
+                <Text style={styles.titleHorizontal}>Net Shield</Text>
+            </View>
+
+            <View style={styles.containerImg}>
+            <ReactNativeZoomableView
+                maxZoom={3}
+                minZoom={0.9}
+                zoomStep={0.5}
+                initialZoom={1}
+                bindToBorders={true}
+                onZoomAfter={this.logOutZoomState}
+                >
+                    <Image style={styles.infoImg} source={images[name]} resizeMode="contain"/>
+                </ReactNativeZoomableView>
+            </View>
+
         </View>
     )
 }
