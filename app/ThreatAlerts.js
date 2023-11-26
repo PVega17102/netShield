@@ -1,9 +1,13 @@
-import { Image, ImageBackground, Pressable, ScrollView, Text, View } from 'react-native';
-import { useState, useEffect } from 'react';
+import { Image, Pressable, ScrollView, Text, View, Linking } from 'react-native';
+import newsList from '../webScraping/webScrap';
 
 import styles from './styles/threaths.module.css'
 
-const rec = Math.floor(Math.random() * 5);
+//Open News
+const openWebPage = (url) => {
+  Linking.openURL(url)
+    .catch((err) => console.error('An error occurred', err));
+};
 
 const ThreatAlerts = ({ navigation }) => {
 
@@ -19,14 +23,28 @@ const ThreatAlerts = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Alerta de Amenazas</Text>
-      <Pressable style={styles.newscard} onPress={() => navigation.push('Infographic', {name: infographicList[rec].name})}>
-      <Text>Poner noticias aqi</Text>
-      </Pressable>
+
+      <ScrollView style={styles.newsScroll} contentContainerStyle={styles.newsScrollContainer}>
+        {newsList.slice(0, 10).map((newsInfo, index) =>
+            <Pressable key={index} style={styles.newsCard} onPress={() => openWebPage(newsInfo.url)}>
+              <View style={styles.newsCardInfo}>
+                <Text style={styles.newsType}>{newsInfo.infoType}</Text>
+                <Text style={styles.newsDate}>{newsInfo.date}</Text>
+              </View>
+
+              <Text style={styles.newsTitle}>{newsInfo.title}</Text>
+              <Text style={styles.newsContent}>{newsInfo.content}</Text>
+              <Image src={newsInfo.imageUrl} style={styles.newsImage} />
+            </Pressable>
+        )}
+      </ScrollView>
+
+
       <ScrollView style={styles.scrollY}>
       <View style={styles.section}>
           <Text style={styles.course}>Infografías</Text>
           <ScrollView horizontal={true} style={styles.scrollX}>
-            {shuffleArray(infographicList).map((Info, index)=>
+            {shuffleArray(infographicList).map((Info, index) =>
             <Pressable key={index} onPress={() => navigation.push('Infographic', {name: Info.name})}>
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>

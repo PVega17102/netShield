@@ -14,53 +14,60 @@
   color: #f4f5f6;
 }
 
-.newscard {
-  margin-top: 1.2rem;
+/*---------------NEWS---------------*/
+.newsScroll {
+  margin-top: 1rem;
   border-radius: 20px;
-  padding: 10px;
-  background: #f4f5f6;
+  background: #d4d4d4;
   width: 90%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.recommended {
-  /* background: #dddddd; */
-  width: 100%;
-  height: 100%;
+  height: 70rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.separation {
+.newsScrollContainer{
+  padding: 15px 20px;
+}
+
+.newsCard{
+  background: #f5f5f5;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem 1rem;
+  border-radius: 1rem;
+  
+}
+
+.newsCardInfo{
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
   justify-content: space-between;
-  padding: 0.5rem 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.videoicon {
-  width: 3.5rem;
-  height: 3.5rem;
+.newsDate, .newsType{
+  font-size: 12px;
 }
 
-.videoiconcont {
-  width: auto;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #dddddd;
-  border-radius: 5px;
-  padding: 0.2rem;
+.newsTitle{
+  font-weight: bold;
 }
+
+.newsContent{
+  font-size: 13px;
+  text-align: justify;
+  margin-bottom: 0.8rem;
+}
+
+.newsImage{
+  width: 100%;
+  height: 6rem;
+  border-radius: 1rem;
+}
+
+
+
+/*---------------Infographics---------------*/
 
 .scrollY {
   margin-top: 2rem;
@@ -116,32 +123,4 @@
   font-size: 13;
   color: #1d2d3d;
   text-align: center;
-}
-
-.videotitle {
-  margin-top: 2rem;
-  font-weight: 600;
-  font-size: 25;
-  color: #f4f5f6;
-  text-align: center;
-}
-
-.videosubtitlecont {
-  width: auto;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #5D92B0;
-  border-radius: 5px;
-  padding: 0.2rem 0.5rem;
-}
-
-.videosubtitle {
-  font-weight: 900;
-  font-size: 17;
-  color: #20653a;
-  text-align: center;
-  text-decoration: underline;
-  /* outline-color: #5D92B0 */
 }
