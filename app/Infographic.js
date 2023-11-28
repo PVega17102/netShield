@@ -2,7 +2,7 @@ import { Image, Text, View } from 'react-native';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 
-import styles from './styles/start.module.css'
+import styles from './styles/infoandcomplaint.module.css'
 
 const Infographic = ({ route, navigation }) => {
 
