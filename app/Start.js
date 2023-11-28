@@ -19,6 +19,7 @@ const Start = ({ navigation }) => {
       <View style={styles.button}>
         <Button title='CURSOS' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
         <Button title='ALERTAS' color={'#5D92B0'} onPress={() => navigation.navigate('ThreatAlerts')}/>
+        <Button title='MODULO DE QUEJAS' color={'#5D92B0'} onPress={() => navigation.navigate('ComplaintModule')}/>
       </View>
     </View>
   )
