@@ -12,6 +12,7 @@ const Home = ({ navigation }) => {
   const [courseList, setCourseList] = useState([]);
 
 
+  //Load user quiz info from local storage
   const loadUserQuizInfo = async () => {
     try {
       const userQuizInfoLoad = await AsyncStorage.getItem('userQuizInfo');
@@ -121,9 +122,14 @@ const Home = ({ navigation }) => {
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
+                  
+                  {/* BADGE GENERATION HERE  */}
                   <Text style={courseInfo.completed === 'true' ? styles.statusDone : styles.statusIncomplete} >{courseInfo.completed === 'true' ? 'Aprobado' : 'No finalizado'}</Text>
                   {courseInfo.completed === 'true' ? ( <Image source={require("./img/badge.png")} style={styles.badge}></Image> ) :null}
+
                 </View>
+
+
                 <Text style={styles.name}>{courseInfo.name}</Text>
               </View>
             </Pressable>
@@ -138,8 +144,11 @@ const Home = ({ navigation }) => {
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
+
+                  {/* BADGE GENERATION HERE  */}
                   <Text style={courseInfo.completed === 'true' ? styles.statusDone : styles.statusIncomplete} >{courseInfo.completed === 'true' ? 'Aprobado' : 'No finalizado'}</Text>
                   {courseInfo.completed === 'true' ? ( <Image source={require("./img/badge.png")} style={styles.badge}></Image> ) :null}
+
                 </View>
                 <Text style={styles.name}>{courseInfo.name}</Text>
               </View>

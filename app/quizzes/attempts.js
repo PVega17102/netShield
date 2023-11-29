@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+//Function to get or set user attempts
 export const getQuizAttempts = async (subjectQuestions) => {
     try {
     const quizAttemptsKey = `quizAttempts_${subjectQuestions}`;
@@ -16,12 +18,14 @@ export const getQuizAttempts = async (subjectQuestions) => {
     }
 };
 
-    //Increment quizz attemps number
+
+//Increment quizz attemps number
 export const incrementQuizAttempts = async (subjectQuestionsAttempt) => {
         try {
         const quizAttemptsKey = `quizAttempts_${subjectQuestionsAttempt}`;
         let quizAttempts = await AsyncStorage.getItem(quizAttemptsKey);
     
+        //If the user has no attempts is set to 0 or increments the attempts
         if (quizAttempts === null) {
             quizAttempts = 0;
         } else {

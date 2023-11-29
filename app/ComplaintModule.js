@@ -10,6 +10,8 @@ const openWebPage = (url) => {
     .catch((err) => console.error('An error occurred', err));
 };
 
+
+//Informative screen
 const ComplaintModule = () => {
   return (
     <View style={styles.container}>

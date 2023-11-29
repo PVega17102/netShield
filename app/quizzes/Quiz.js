@@ -28,7 +28,7 @@ const theme = {
     colors: MainScheme
 }
 
-//SUFFLE ARRAY
+//SUFFLE ARRAY FUNCTION FOR RANDOM QUESTIONS
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -40,9 +40,14 @@ function shuffleArray(array) {
 
 const  OnlineScamQuiz = ({ route, navigation }) => {
 
+    //Params from the navigation when navigating to this page
     const { subjectQuestions, subjectName, videoID } = route.params;
+
+
     const [shuffledQuizData, setShuffledQuizData] = useState([]);
 
+
+    //Switch to set questions and subject according to the params
     useEffect(() => {
         switch (subjectQuestions) {
         case 'onlineScamQuizQuestions':
@@ -94,6 +99,8 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
         setCheckButtonDisabled(false); // Enable the button when an answer is selected
     }
 
+
+    //Here the  answer is checked to add points to the score and give feedback
     function checkAnswer() {
         const currentQuestion = selectedQuestions[currentQuestionIndex];
 
@@ -106,17 +113,19 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
 
         setHasCheckedCurrentQuestion(true); // The user has checked the current question
         setCheckButtonDisabled(true); // Disable the button after checking
-        setCheckButtonVisible(false)
+        setCheckButtonVisible(false);  //Hide button
         setSnackbarVisible(true);
         setNextButtonVisible(true); 
     }
 
+    //Function to load the next question
     function nextQuestion () {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(null);
         setHasCheckedCurrentQuestion(false); // Reset for the next question
 
 
+        //The last question navigates to the results page sending updated params
         if (currentQuestionIndex === selectedQuestions.length - 1) {
             navigation.navigate('Result', {
                 userScore,
@@ -200,6 +209,8 @@ const  OnlineScamQuiz = ({ route, navigation }) => {
                 )}
 
 
+
+                {/* Feedback for the questions */}
                 <Snackbar
                     visible={snackbarVisible}
                     onDismiss={() => setSnackbarVisible(false)}

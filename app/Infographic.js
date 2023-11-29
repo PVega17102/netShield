@@ -6,6 +6,7 @@ import styles from './styles/infoandcomplaint.module.css'
 
 const Infographic = ({ route, navigation }) => {
 
+    //Get route params to set image
     const { name } = route.params;
 
     const images = {

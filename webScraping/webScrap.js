@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import cheerio from 'cheerio'; //Use cheerio to perform webscrapping
 
 
 const newsList = [];
@@ -7,6 +7,7 @@ const newsList = [];
 // Function to perform web scraping
 const webScrap = async () => {
     try {
+        //Get the webpage 
         const response = await axios.get('https://www.computerweekly.com/es/recursos/Prevencion-de-amenazas');
         const html = response.data;
 
@@ -14,6 +15,7 @@ const webScrap = async () => {
         const $ = cheerio.load(html);
 
         $('.topic-related-content-list li').each((index, element) => {
+            //Find items in the html retrieved
             const newsItem = {};
             const anchor = $(element).find('a');
             const title = anchor.text().replace("Continúe Leyendo", "");

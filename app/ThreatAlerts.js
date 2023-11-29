@@ -1,5 +1,6 @@
 import { Image, Pressable, ScrollView, Text, View, Linking } from 'react-native';
-import newsList from '../webScraping/webScrap';
+
+import newsList from '../webScraping/webScrap'; //Get news List from webscrapping
 
 import styles from './styles/threaths.module.css'
 
@@ -24,6 +25,7 @@ const ThreatAlerts = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Alerta de Amenazas</Text>
 
+      {/* SHOW NEWS HERE */}
       <ScrollView style={styles.newsScroll} contentContainerStyle={styles.newsScrollContainer}>
         {newsList.slice(0, 10).map((newsInfo, index) =>
             <Pressable key={index} style={styles.newsCard} onPress={() => openWebPage(newsInfo.url)}>
@@ -39,7 +41,7 @@ const ThreatAlerts = ({ navigation }) => {
         )}
       </ScrollView>
 
-
+      {/* Navigate to infographics according to the selected subject */}
       <ScrollView style={styles.scrollY}>
       <View style={styles.section}>
           <Text style={styles.course}>Infografías</Text>

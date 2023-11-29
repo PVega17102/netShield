@@ -1,6 +1,7 @@
 // quizInfo.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+//Initializes user info to show courses status
 export const initializeUserQuizInfo = async () => {
 const initialUserQuizInfo = {
     cyberAtacksStatus: false,

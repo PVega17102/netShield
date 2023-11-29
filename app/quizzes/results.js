@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage'; //Libreria para usar memorio local
 import { initializeUserQuizInfo } from './quizInfo';
 
 //STYLES
@@ -20,9 +20,14 @@ const theme = {
 }
 
 const ResultScreen = ({route, navigation}) => {
-  const { userScore, totalQuestions, subjectName, subjectQuestions, videoID } = route.params;  
+
+  //Params send from the previous page
+  const { userScore, totalQuestions, subjectName, subjectQuestions, videoID } = route.params;
+  
+  //Calculate user percentage
   const percentage = ((userScore / totalQuestions) * 100).toFixed(2);
 
+  //Feedback message
   const approvedMessage = percentage >= 80.00 ? '¡Aprobado!' : 'No Aprobado';
 
   const [parsedUserQuizInfo, setParsedUserQuizInfo] = useState(userQuizInfo);
@@ -52,6 +57,8 @@ const ResultScreen = ({route, navigation}) => {
               cyberAtacksQuestions: 'cyberAtacksStatus',
             };
             
+
+            //Set new values to the course if the quiz was approved
             const relevantProperty = statusMap[subjectQuestions];
             if (relevantProperty) {
               parsedUserQuizInfo[relevantProperty] = percentage >= 80.00;
@@ -79,11 +86,16 @@ const ResultScreen = ({route, navigation}) => {
 
       <Card style={styles.card}>
         <Text style={styles.card_title}>Your Quiz Results</Text>
+
+        {/* Set message and style according to quiz Results */}
         <Text style={approvedMessage === '¡Aprobado!' ? styles.approved : styles.not_approved}>{approvedMessage}</Text>
         <View style={styles.score_info}>
           <Text style={styles.text_info}>Puntuación: {userScore}/{totalQuestions}</Text>
           <Text style={styles.text_info}>Calificación: {percentage}%</Text>
         </View>
+
+
+        {/* Show button according to the quiz results */}
         {approvedMessage === '¡Aprobado!' ?
         <Button
           title="Finish Quiz"
