@@ -19,7 +19,7 @@ const Infographic = ({ route, navigation }) => {
 
 
     return (
-        <View style={styles.container}>
+        <View style={styles.containerPad}>
             <View style={styles.containerHorizontal}>
                 <Image style={styles.logoHorizontal} source={require('./img/netShield.png')}/>
                 <Text style={styles.titleHorizontal}>Net Shield</Text>
