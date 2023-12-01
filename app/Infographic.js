@@ -10,12 +10,12 @@ const Infographic = ({ route, navigation }) => {
     const { name } = route.params;
 
     const images = {
-        'Actualizaciones Regulares de Software': 'swUpdatesInfo.jpg',
-        'Online Scamming': require('./img/onlineScamInfo.png'),
-        'Phishing': 'phishingInfo.jpg',
-        'Protección de Identidad Personal': 'persIdentityInfo.jpg',
-        'Strong Passwords': 'strongPassInfo.jpg',
-        'Protección Contra Ciberataques': 'cyberAtacksInfo.jpg'
+        'Actualizaciones Regulares de Software': require('./img/actualizacionesReg.png'),
+        'Online Scamming': require('./img/Estafaslinea.png'),
+        'Phishing': require('./img/PhishingInfo.png'),
+        'Protección de Identidad Personal': require('./img/identidadPers.png'),
+        'Strong Passwords': require('./img/ContraseñasFuertes.png'),
+        'Protección Contra Ciberataques': require('./img/cyberAtaques.png')
     }
 
 
