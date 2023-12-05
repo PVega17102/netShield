@@ -1,7 +1,5 @@
 import { Image, Pressable, ScrollView, Text, View, Linking } from 'react-native';
-
-import newsList from '../webScraping/webScrap'; //Get news List from webscrapping
-
+import axios from 'axios';
 import styles from './styles/threaths.module.css'
 
 //Open News
@@ -9,6 +7,20 @@ const openWebPage = (url) => {
   Linking.openURL(url)
     .catch((err) => console.error('An error occurred', err));
 };
+
+let newsList = [];
+
+async function populateNewsList(){
+  try {
+    const result = await axios.get('https://si-szzt.onrender.com');
+    newsList = result.data.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error; 
+  }
+}
+
+populateNewsList();
 
 const ThreatAlerts = ({ navigation }) => {
 
@@ -27,16 +39,11 @@ const ThreatAlerts = ({ navigation }) => {
 
       {/* SHOW NEWS HERE */}
       <ScrollView style={styles.newsScroll} contentContainerStyle={styles.newsScrollContainer}>
-        {newsList.slice(0, 10).map((newsInfo, index) =>
-            <Pressable key={index} style={styles.newsCard} onPress={() => openWebPage(newsInfo.url)}>
-              <View style={styles.newsCardInfo}>
-                <Text style={styles.newsType}>{newsInfo.infoType}</Text>
-                <Text style={styles.newsDate}>{newsInfo.date}</Text>
-              </View>
-
+        {newsList.map((newsInfo, index) =>
+            <Pressable key={index} style={styles.newsCard} onPress={() => openWebPage(newsInfo.link)}>
               <Text style={styles.newsTitle}>{newsInfo.title}</Text>
-              <Text style={styles.newsContent}>{newsInfo.content}</Text>
-              <Image src={newsInfo.imageUrl} style={styles.newsImage} />
+              <Text style={styles.newsContent}>{newsInfo.description}</Text>
+              <Image src={newsInfo.image_url} style={styles.newsImage} />
             </Pressable>
         )}
       </ScrollView>
