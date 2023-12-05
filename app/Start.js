@@ -20,9 +20,9 @@ const Start = ({ navigation }) => {
       {/* Navigation buttons */}
       <View style={styles.button}>
         <Button title='CURSOS' color={'#5D92B0'} onPress={() => navigation.navigate('Home')}/>
-        <Button title='ALERTAS' color={'#5D92B0'} onPress={setTimeout(() => {
+        <Button title='ALERTAS' color={'#5D92B0'} onPress={() => {setTimeout(() => {
           navigation.navigate('ThreatAlerts')
-        }, 1000)}/>
+        }, 500)}}/>
         <Button title='MODULO DE QUEJAS' color={'#5D92B0'} onPress={() => navigation.navigate('ComplaintModule')}/>
       </View>
     </View>
