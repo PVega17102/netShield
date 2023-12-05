@@ -13,6 +13,7 @@ import ResultScreen from './quizzes/results'; // Your result screen component
 import ThreatAlerts from './ThreatAlerts';
 import Infographic from './Infographic';
 import ComplaintModule from './ComplaintModule';
+import CautionScreen from './CautionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,10 @@ const AppNavigator = () => {
 
         <Stack.Screen name="ComplaintModule">
           {(props) => <ComplaintModule {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="CautionScreen">
+          {(props) => <CautionScreen {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

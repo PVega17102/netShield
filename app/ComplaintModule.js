@@ -1,4 +1,4 @@
-import { Image, Text, View, ScrollView, Linking } from 'react-native';
+import { Image, Text, View, ScrollView, Linking, Pressable } from 'react-native';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 import styles from './styles/infoandcomplaint.module.css'
@@ -10,9 +10,29 @@ const openWebPage = (url) => {
     .catch((err) => console.error('An error occurred', err));
 };
 
+const cautionsList = [
+  {
+    name: "CIBERATAQUE"
+  },
+  {
+    name: "ROBO DE IDENTIDAD PERSONAL"
+  },
+  {
+    name: "CONTRASEÑAS"
+  },
+  {
+    name: "ESTAFAS EN LINEA"
+  },
+  {
+    name: "PHISHING"
+  },
+  {
+    name: "ACTUALIZACIONES DE SOFTWARE"
+  }
+]
 
 //Informative screen
-const ComplaintModule = () => {
+const ComplaintModule = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <View style={styles.containerHorizontal}>
@@ -24,17 +44,12 @@ const ComplaintModule = () => {
       <ScrollView style={styles.scrollContainer}>
 
         <View style={styles.stepsContainer}>
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>1: Identificar el delito cibernético</Text></View>
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>2: Reúne evidencia</Text></View>
 
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>3: Accede al portal en línea</Text></View>
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>4: Completa el formulario de denuncia</Text></View>
-
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>5: Adjunta la evidencia</Text></View>
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>6: Revisa y envía la denuncia</Text></View>
-
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>7: Contacta a las autoridades por teléfono (opcional)</Text></View>
-          <View style={styles.stepsToReport}><Text style={styles.stepText}>8: Sigue las instrucciones de las autoridades</Text></View>
+        {cautionsList.map((cautionsInfo, index)=>
+              <Pressable key={index} style={styles.stepsToReport} onPress={() => navigation.push('CautionScreen', {name: cautionsInfo.name})}>
+                <Text style={styles.stepText}>{cautionsInfo.name}</Text>
+              </Pressable>
+            )}
         </View>
 
         <View style={styles.contactContainer}>

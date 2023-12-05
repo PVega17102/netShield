@@ -1,0 +1,50 @@
+.container {
+    flex: 1;
+    background-color: #f4f5f6;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 0 0;
+}
+
+.containerHorizontal{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-evenly;
+padding-top: 25px;
+}
+
+.titleHorizontal {
+font-weight: 700;
+font-size: 30;
+color: #5D92B0;
+}
+
+.logoHorizontal{
+    width: 4rem;
+    height: 4rem;
+    }
+
+.scrollContainer{
+    width: 100%;
+    
+    background-color: #f4f5f6;
+}
+
+.stepsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15;
+    padding: 1rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stepText{
+    color: #1d1d1d;
+    padding: 10px;
+    font-weight: bold;
+    text-align: justify;
+    line-height: 22px;
+}
