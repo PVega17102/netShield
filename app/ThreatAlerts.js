@@ -1,4 +1,5 @@
 import { Image, Pressable, ScrollView, Text, View, Linking } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './styles/threaths.module.css'
 
@@ -8,19 +9,6 @@ const openWebPage = (url) => {
     .catch((err) => console.error('An error occurred', err));
 };
 
-let newsList = [];
-
-async function populateNewsList(){
-  try {
-    const result = await axios.get('https://si-szzt.onrender.com');
-    newsList = result.data.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error; 
-  }
-}
-
-populateNewsList();
 
 const ThreatAlerts = ({ navigation }) => {
 
@@ -32,6 +20,23 @@ const ThreatAlerts = ({ navigation }) => {
     }
     return array;
   }
+
+
+  const [newsList, setNewsList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get('https://si-szzt.onrender.com');
+        setNewsList(result.data.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
 
   return (
     <View style={styles.container}>
