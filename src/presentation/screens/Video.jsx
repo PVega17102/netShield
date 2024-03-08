@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Alert, Text, Button, Pressable } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import YoutubeIframe from 'react-native-youtube-iframe';
-<<<<<<< Updated upstream:app/Video.js
-=======
 import { getQuizAttempts } from '../quizzes/attempts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -11,14 +9,10 @@ import {
     MD3LightTheme as DefaulTheme,
     PaperProvider,
     Button} from 'react-native-paper'; 
->>>>>>> Stashed changes:src/presentation/screens/Video.jsx
 
 import { styles } from '../styles/video-styles';
 import { useNavigation } from '@react-navigation/native';
 
-<<<<<<< Updated upstream:app/Video.js
-const Video = ({ route, navigation }) => {
-=======
 const theme = {
     ...DefaulTheme,
     colors: MainScheme
@@ -27,7 +21,6 @@ const theme = {
 const Video = ({ route }) => {
 
     const navigation = useNavigation();
->>>>>>> Stashed changes:src/presentation/screens/Video.jsx
     
     const { subjectQuestions, subjectName, videoID} = route.params;
     
@@ -44,8 +37,6 @@ const Video = ({ route }) => {
           setPlaying(false);
         }
     };
-<<<<<<< Updated upstream:app/Video.js
-=======
 
     //Manage attempts
     const [quizAttempts, setQuizAttempts] = useState(0);
@@ -105,8 +96,8 @@ const Video = ({ route }) => {
         getSingleQuizStatus(subjectQuestions);
     }, []);
     
->>>>>>> Stashed changes:src/presentation/screens/Video.jsx
     return (
+        <PaperProvider theme={theme}>
         <View style={styles.container}>
             <YoutubeIframe
                 height={300}
@@ -115,15 +106,11 @@ const Video = ({ route }) => {
                 onChangeState={onStateChange}
                 initialPlayerParams={{controls: false}}
             />
+
             <View style={styles.content}>
+
                 <View>
                     <Text style={styles.title}>{subjectName}</Text>
-<<<<<<< Updated upstream:app/Video.js
-                </View>
-                <View style={{display:`${continuar ? 'none' : 'flex'}`}}>
-                    <View style={styles.displaycontainer}>
-                        <Text style={styles.note}>Nota: Debes ver el curso completo para continuar.</Text>
-=======
                     <Text style={styles.quiz_attempts}>Intentos: {quizAttempts}/5</Text>
                 </View>
                 
@@ -159,16 +146,12 @@ const Video = ({ route }) => {
                     //If the user has no more attempts
                     <View style={styles.displaycontainer}>
                         <Text style={styles.note_no_attempts}>Has agotado tus intentos para el quiz de esta sección.</Text>
->>>>>>> Stashed changes:src/presentation/screens/Video.jsx
                     </View>
-                </View>
-                <View style={{display:`${continuar ? 'flex' : 'none'}`}}>
-                    <Pressable style={styles.displaycontainer} onPress={() => navigation.navigate('Quiz', {subjectQuestions: subjectQuestions, subjectName: subjectName, videoID: videoID})}>
-                        <Text style={styles.note}>PRESIONA PARA CONTINUAR</Text>
-                    </Pressable>
-                </View>
+                )
+            }
             </View>
         </View>
+        </PaperProvider>
     );
 }
 

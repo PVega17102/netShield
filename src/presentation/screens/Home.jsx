@@ -1,24 +1,10 @@
-<<<<<<< Updated upstream:app/Home.js
-import { Image, ImageBackground, Pressable, ScrollView, Text, View } from 'react-native';
-=======
 import { ActivityIndicator, Image, ImageBackground, Pressable, ScrollView, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect } from 'react';
->>>>>>> Stashed changes:src/presentation/screens/Home.jsx
 
 import { styles } from '../styles/home-style'
 import { useNavigation } from '@react-navigation/native';
 
-<<<<<<< Updated upstream:app/Home.js
-const rec = Math.floor(Math.random() * 5);
-
-const Home = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Pressable style={styles.videocard} onPress={() => navigation.push('Video', {subjectQuestions: courseList[rec].subjectQuestions, subjectName: courseList[rec].name, videoID: courseList[rec].videoID})}>
-        <ImageBackground source={courseList[rec].thumb} borderRadius={10} style={styles.recommended}>
-=======
 
 const Home = () => {
   
@@ -122,7 +108,6 @@ const Home = () => {
       {/* {courseList[random] ? ( */}
       <Pressable style={styles.videocard} onPress={() => navigation.navigate('Video', { subjectQuestions:'phishingQuestions', subjectName:'Phishing', videoID:'TVG_t2ExrXw' })}>
         <ImageBackground source={require('../assets/img/thumb-phishing.webp')} borderRadius={10} style={styles.recommended}>
->>>>>>> Stashed changes:src/presentation/screens/Home.jsx
           <View style={styles.separation}>
             <View style={styles.videosubtitlecont}>
               <Text style={styles.videosubtitle}>Recomendado</Text>
@@ -143,14 +128,11 @@ const Home = () => {
               <View style={styles.card}>
                 <View style={styles.imgcontainer}>
                   <Image source={courseInfo.img} style={styles.courseimage}/>
-<<<<<<< Updated upstream:app/Home.js
-=======
                   
                   {/* BADGE GENERATION HERE  */}
                   <Text style={courseInfo.completed === 'true' ? styles.statusDone : styles.statusIncomplete} >{courseInfo.completed === 'true' ? 'Aprobado' : 'No finalizado'}</Text>
                   {courseInfo.completed === 'true' ? ( <Image source={require("../assets/img/badge.webp")} style={styles.badge}></Image> ) :null}
 
->>>>>>> Stashed changes:src/presentation/screens/Home.jsx
                 </View>
                 <Text style={styles.name}>{courseInfo.name}</Text>
               </View>
@@ -161,13 +143,6 @@ const Home = () => {
         <View style={styles.section}>
           <Text style={styles.course}>Tendencia</Text>
           <ScrollView horizontal={true} style={styles.scrollX}>
-<<<<<<< Updated upstream:app/Home.js
-            {courseList.map((courseInfo, index)=>
-            <Pressable key={index} onPress={() => navigation.push('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
-              <View style={styles.card}>
-                <View style={styles.imgcontainer}>
-                  <Image source={courseInfo.img} style={styles.courseimage}/>
-=======
             {shuffleArray(courseList).map((courseInfo, index)=>
             <Pressable key={index} onPress={() => navigation.navigate('Video', {subjectQuestions: courseInfo.subjectQuestions, subjectName: courseInfo.name, videoID: courseInfo.videoID})}>
               <View style={styles.card}>
@@ -178,7 +153,6 @@ const Home = () => {
                   <Text style={courseInfo.completed === 'true' ? styles.statusDone : styles.statusIncomplete} >{courseInfo.completed === 'true' ? 'Aprobado' : 'No finalizado'}</Text>
                   {courseInfo.completed === 'true' ? ( <Image source={require("../assets/img/badge.webp")} style={styles.badge}></Image> ) :null}
 
->>>>>>> Stashed changes:src/presentation/screens/Home.jsx
                 </View>
                 <Text style={styles.name}>{courseInfo.name}</Text>
               </View>

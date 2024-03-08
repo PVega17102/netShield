@@ -19,7 +19,7 @@ export const Navigator = () => {
   return (
       <Stack.Navigator initialRouteName='Start' screenOptions={{ headerShown: false }}>
 
-        <Stack.Screen name="Start" component={Start} ></Stack.Screen>
+        <Stack.Screen name="Start" component={Start} />
         
         <Stack.Screen name="Home" component={Home} />
 

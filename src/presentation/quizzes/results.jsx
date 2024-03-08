@@ -9,11 +9,8 @@ import {
   PaperProvider,
   Button,
   Card } from 'react-native-paper'; 
-<<<<<<< Updated upstream:app/quizzes/results.js
-=======
 import userQuizInfo from './quizInfo';
 import { useNavigation } from '@react-navigation/native';
->>>>>>> Stashed changes:src/presentation/quizzes/results.jsx
 
 
 const theme = {
@@ -21,10 +18,6 @@ const theme = {
   colors: MainScheme
 }
 
-<<<<<<< Updated upstream:app/quizzes/results.js
-const ResultScreen = ({route, navigation}) => {
-  const { userScore, totalQuestions, subjectName, subjectQuestions, videoID } = route.params;  
-=======
 const ResultScreen = ({ route }) => {
 
   const navigation = useNavigation();
@@ -33,7 +26,6 @@ const ResultScreen = ({ route }) => {
   const { userScore, totalQuestions, subjectName, subjectQuestions, videoID } = route.params;
   
   //Calculate user percentage
->>>>>>> Stashed changes:src/presentation/quizzes/results.jsx
   const percentage = ((userScore / totalQuestions) * 100).toFixed(2);
 
   const approvedMessage = percentage >= 80.00 ? '¡Aprobado!' : 'No Aprobado';
@@ -59,11 +51,7 @@ const ResultScreen = ({ route }) => {
           mode='contained'
           theme={{roundness: 1}}
           style={styles.finish_button}
-<<<<<<< Updated upstream:app/quizzes/results.js
-          onPress={() => navigation.push('Start')}>
-=======
           onPress={() => navigation.navigate('Home')}>
->>>>>>> Stashed changes:src/presentation/quizzes/results.jsx
         Finish Quiz
         </Button>
         : 
